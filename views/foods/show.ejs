@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Pantry</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Food Name: <%= food.name %></h1>
+    <h2>Quantity: <%= food.quantity %></h2>
+    <h2>Expiration Date: <%= food.expirationDate %></h2>
+
+    <form
+        action="/users/<%= user._id %>/foods/<%= food._id %>?_method=DELETE"
+        method="POST"
+    >
+        <button type="submit">Delete Food</button>
+    </form>
+    <a href="/users/<%= user._id%>/foods/<%=food._id%>/edit">Edit Item</a>
+
+  </body>
+</html>

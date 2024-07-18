@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
+const SALT_ROUNDS = 11
 
 const User = require('../models/user.js');
 
@@ -32,7 +33,7 @@ router.post('/sign-up', async (req, res) => {
     }
   
     // Must hash the password before sending to the database
-    const hashedPassword = bcrypt.hashSync(req.body.password, 10);
+    const hashedPassword = bcrypt.hashSync(req.body.password, SALT_ROUNDS);
     req.body.password = hashedPassword;
   
     // All ready to create the new user!
